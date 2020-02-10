@@ -36,7 +36,9 @@ console.log(msg);
 
 function movieTest ( testAnswer ) {
     if (testAnswer == 'Casablanca')  {
-        return 'Of course it is';
+        return 'is Casalabca a great movie: Of course it is';
+    } else {
+        return `${testAnswer} is not as good as Casablanca`;
     }
 }
 
