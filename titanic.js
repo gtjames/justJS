@@ -2,7 +2,7 @@ const fs = require('fs')
 
 let titanic = [];
 
-fs.readFile('titanic.csv', {
+fs.readFile('/projects/csv/titanic.csv', {
   encoding: 'utf-8'
 }, (err, data) => {
   if (err) {
@@ -16,8 +16,21 @@ fs.readFile('titanic.csv', {
     let person = new Passenger(attributes[0], attributes[1], attributes[2], attributes[3], attributes[4], attributes[5]);
     titanic.push(person);
   }
+  let cnt;
+
+  //  how many people sailed on the titanic?
+  //  this way we count the size of the titanic array (this is much quicker)
   console.log(titanic.length);
-  let cnt = titanic.reduce((tot, t) => tot + (t.survivor ? 1 : 0), 0);
+  //  here we loop through the array and count the elements (we could also to ++total)
+  //  what is this extra parameter for        v?
+  //  this is the starting point 0. Make it a 100 and note that the total is 100 bigger
+  //  it is an optional value. Remove the ',0' and look at your result
+  cnt = titanic.reduce((total, t) => total+1, 0);
+  console.table(cnt);
+
+  //  how many survived the night to remember?
+  //  for every survivor add one to total
+  cnt = titanic.reduce((total, t) => total + (t.survivor  ? 1 : 0), 0);
   console.table(cnt);
 
   cnt = titanic.reduce((tally, t) => {
@@ -26,21 +39,6 @@ fs.readFile('titanic.csv', {
   }, {})
   console.table(cnt);
 })
-
-// var fs = require('fs'),
-//     path = require('path'),    
-//     filePath = path.join(__dirname, 'start.html');
-
-// fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
-//     if (!err) {
-//         console.log('received data: ' + data);
-//         response.writeHead(200, {'Content-Type': 'text/html'});
-//         response.write(data);
-//         response.end();
-//     } else {
-//         console.log(err);
-//     }
-// });
 
 class Passenger {
   constructor(Name, Age, PassengerClass, PassengerCrew, Role, Survivor) {
