@@ -1,20 +1,32 @@
 const fs = require('fs')
 
+//  read a list of Volcanoes
 let volcanoes = [];
-
-fs.readFile('volcanoes.json', {encoding: 'utf-8'}, (err, data) => {
+fs.readFile('volcanoes.json', {
+    encoding: 'utf-8'
+}, (err, data) => {
     if (err) {
         console.error(err)
         return
     }
-    volcanoes = JSON.parse(data);
-    console.log(volcanoes.length);
-    
-    let cnt;
-    cnt = volcanoes.filter(v => v.DEATHS |= 0, 0);
-    console.table(cnt.length);
-    
 
-    cnt = volcanoes.reduce((total, v) => total + v.DEATHS, 0);
-    console.table(cnt);
+    //  convert the text of the Volcanoes into an array of JSON objects
+    volcanoes = JSON.parse(data);
+    console.log(`There are #{volcanoes.length} volcanoes in our list`);
+
+    //  this will tidy up our data. The DEATHS attribute is inside of quotes
+    //  so JS sees it as a string. This little tweeak will convert DEATHS to a number
+    volcanoes.forEach(v => v.DEATHS = +v.DEATHS);
+
+    let deaths = volcanoes.reduce((total, v) => total + v.DEATHS, 0);
+    console.table(`number of deaths ${deaths}`);
+    let aveDeaths = deaths / volcanoes.length;
+    console.table(`avegage of deaths ${aveDeaths.toFixed(0)}`);
+
+    let elevationTot = volcanoes.reduce((total, v) => total + v.Elevation, 0);
+    let aveElevation = elevationTot / volcanoes.length;
+    console.table(`Total Elevation ${aveElevation.toFixed(0)}`);
+
+    let names = volcanoes.map(v => v.Name);
+    //console.table(names);
 })

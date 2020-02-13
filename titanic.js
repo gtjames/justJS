@@ -2,9 +2,8 @@ const fs = require('fs')
 
 let titanic = [];
 
-fs.readFile('/projects/csv/titanic.csv', {
-  encoding: 'utf-8'
-}, (err, data) => {
+fs.readFile('/projects/csv/titanic.csv', {encoding: 'utf-8'}, 
+                (err, data) => {
   if (err) {
     console.error(err)
     return
@@ -30,8 +29,19 @@ fs.readFile('/projects/csv/titanic.csv', {
 
   //  how many survived the night to remember?
   //  for every survivor add one to total
-  cnt = titanic.reduce((total, t) => total + (t.survivor  ? 1 : 0), 0);
-  console.table(cnt);
+  cnt = titanic.reduce((total, t) => total + (t.survivor ? 1 : 0), 0);
+  console.table('number of survivors: ' + cnt);
+  let died = titanic.reduce((total, t) => total + (t.survivor ? 0 : 1), 0);
+  console.table('number of deaths:   ' + died);
+
+  let henry = titanic.filter( p => p.name.includes('Henry'));
+  console.table(henry);
+
+  // let firstClass = titanic.reduce((total, t) => total + (t.passengerClass.includes('1st') ? 1 : 0), 0);
+  // console.log('first class passengers ' + firstClass);
+
+  //let list = titanic.filter();
+//  console.table(titanic)
 
   cnt = titanic.reduce((tally, t) => {
     tally[t.passengerCrew] = (tally[t.passengerCrew] || 0) + 1;
