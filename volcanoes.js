@@ -14,11 +14,11 @@ fs.readFile('volcanoes.json', {
     volcanoes = JSON.parse(data);
     console.log(`There are #{volcanoes.length} volcanoes in our list`);
 
-    //  this will tidy up our data. The DEATHS attribute is inside of quotes
-    //  so JS sees it as a string. This little tweeak will convert DEATHS to a number
-    volcanoes.forEach(v => v.DEATHS = +v.DEATHS);
+    //  this will tidy up our data. The Deaths attribute is inside of quotes
+    //  so JS sees it as a string. This little tweeak will convert Deaths to a number
+    volcanoes.forEach(v => v.Deaths = +v.Deaths);
 
-    let deaths = volcanoes.reduce((total, v) => total + v.DEATHS, 0);
+    let deaths = volcanoes.reduce((total, v) => total + v.Deaths, 0);
     console.table(`number of deaths ${deaths}`);
     let aveDeaths = deaths / volcanoes.length;
     console.table(`avegage of deaths ${aveDeaths.toFixed(0)}`);
