@@ -1,6 +1,6 @@
 // Code to keep in Main JS
 import ToDos from './todo.js';
-const myToDoList = new ToDos('todo');
+const myToDoList = new ToDos();
 window.addEventListener('load', () => {
   myToDoList.showToDoList();
   myToDoList.addTabListeners();
