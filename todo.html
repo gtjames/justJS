@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Challenge One: To DO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="todo.css" />
+  </head>
+
+  <body>
+    <main>
+      <h1>todos</h1>
+      <h2><span class="redText">To</span>day<span class="redText">     do     S</span>omething! </h2>
+      <ul id="todo">
+        <!-- to do list will appear here -->
+      </ul>
+      <footer>
+            <div class="bottom-label" id="task-counter">
+            </div>
+            <div class="bottom-tab selected-tab" id="filter-all">
+                <p>ALL</p>
+            </div>
+            <div class="bottom-tab" id="filter-active">
+                <p>ACTIVE</p>
+            </div>
+            <div class="bottom-tab" id="filter-completed">
+                <p>COMPLETED</p>
+            </div>
+      </footer>
+    </main>
+
+    <footer class="footer-add">
+        <input type="text" id="new_task" placeholder="Enjoy your day or add a new task">
+        <button id="addnew">ADD</button>
+    </footer>
+
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
