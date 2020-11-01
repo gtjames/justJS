@@ -12,19 +12,19 @@ export default class todo {
         this.saveToDo(this.newToDo.value);
         this.showToDoList();
     }
+
     showToDoList() {
-        getToDos();
-        renderToDoList(this.UList, toDoList);
-        if (toDoList != null) {
-            this.addEventListeners();
-        }
+        toDoList = utils.readLS("todo");
+        if ( toDoList == null) toDoList = []
+        this.filterToDos(null);
     }
+
     addEventListeners() {
         const listItems = Array.from(this.UList.children);
         if (listItems.length > 0 && listItems[0].children[0]) {
             listItems.forEach(item => {
                 item.children[0].addEventListener('click', event => {
-                    this.completeToDo(event.currentTarget.id);
+                    this.completeToDo(event.currentTarget.parentElement.id);
                 })
                 //task removal buttons
                 item.children[2].addEventListener('click', event => {
@@ -33,6 +33,7 @@ export default class todo {
             })
         }
     }
+
     //toggle the checkbox on/off, change boolean of item to true/false
     completeToDo(itemID) {
         //find this individual task in the To Do List
@@ -42,8 +43,10 @@ export default class todo {
         //send the updated array to LocalStorage        
         utils.writeLS("todo", toDoList);
         //style the item
-        markDone(itemID);
+        let task = document.getElementById(itemID);
+        task.classList.toggle('completed');
     }
+
     //remove an item from the list
     removeItem(itemID) {
         let oneTask = toDoList.findIndex(task => task.id == itemID);
@@ -65,27 +68,25 @@ export default class todo {
             })
         })
     }
+
     filterToDos(category) {
-        category = filterBy(category);
-        const arrFilter = toDoList.filter(task => {
-            if (category != null) {
-                return task.completed == category;
-            } else {
-                return task;
-            }
-        })
+        let arrFilter;
+        switch (category) {
+            case 'active'   :   arrFilter = toDoList.filter(task => task.completed === false);
+            case 'completed':   arrFilter = toDoList.filter(task => task.completed === true);
+            default         :   arrFilter = toDoList;               //  return all tasks
+        }
         renderToDoList(this.UList, arrFilter);
         this.addEventListeners();
     }
 
     saveToDo(nextTodo) {
-        // generate an ID based on timestamp
-        let taskID = Date.now();
         //create a task object using the entered data (incomplete by default)
         //(only if a value has been entered)
         if (nextTodo) {
+            // generate an ID based on timestamp
             const newTask = {
-                id: taskID,
+                id: Date.now(),
                 content: nextTodo,
                 completed: false
             };
@@ -98,11 +99,6 @@ export default class todo {
         }
         this.newToDo.focus();
     }
-}
-
-function getToDos() {
-    toDoList = utils.readLS("todo");
-    return toDoList;
 }
 
 //make the list show up in HTML
@@ -119,12 +115,14 @@ function renderToDoList(parent, thisList) {
     }
     updateCount(thisList);
 }
+
 //make one item show up in HTML
 function renderOneToDo(task) {
     const oneTask = document.createElement('li');
-    task.completed ? oneTask.classList.toggle('completed') : '';
-    oneTask.innerHTML = `<input id="${task.id}" name="${task.content}" type="checkbox" value="none" ${task.completed ? 'checked' : ''}>
-        <label for="${task.id}">${task.content}</label>
+    oneTask.className = task.completed ? 'completed' : '';
+    oneTask.id = task.id;
+    oneTask.innerHTML = `<input id="${task.id}X" type="checkbox" value="none" ${task.completed ? 'checked' : ''}>
+        <label for="${task.id}X">${task.content}</label>
         <div class="remove">X</div>`;
     return oneTask;
 }
@@ -137,26 +135,4 @@ function updateCount(list) {
     } else {
         taskCounter.innerHTML = `0 tasks found`;
     }
-}
-
-//make a completed item style itself finished
-function markDone(itemID) {
-    let taskContainer = document.getElementById(itemID);
-    taskContainer.classList.toggle('completed');
-}
-
-//filter list by active, completed, or all
-function filterBy(category) {
-    switch (category) {
-        case 'filter-active':
-            category = false;
-            break;
-        case 'filter-completed':
-            category = true;
-            break;
-        case 'filter-all':
-            category = null;
-            break;
-    }
-    return category;
 }
