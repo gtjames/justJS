@@ -1,13 +1,39 @@
+const fetch = require("node-fetch");
 /**
  * Created by Edge Tech Academy on 5/4/2017.
  */
 
+let me = {
+    familyMembers : [
+        {firstName: 'gary', lastName: 'james', age: 66},
+        {firstName: 'Tari', lastName: 'james', age: 66},
+        {firstName: 'Shiloh', lastName: 'Howland', age: 41},
+        {firstName: 'Christiaan', lastName: 'james', age: 39},
+    ]
+};
+
+for (var i = 0; i < me.details.length; i++) {
+    console.log(`people in the james gang ${me.familyMembers[i].firstName} ${me.familyMembers[i].lastName} is ${me.familyMembers[i].age} years old`)
+}
+
+
+console.log(me.firstName)
+console.log(`Hello my name is ${me.firstName} ${me.lastName} and I am  ${me.age} years old`)
+
+fetch('https://imdb-api.com/en/API/SearchMovie/k_lLeNEBFq/jaws')
+    //https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+    .then(response => response.json())
+    .then(commits => out(commits));
+
+function out(commits) {
+    commits.results.forEach(commit => console.log(commit.title));
+}
 let ourSchool = {
     name: "Edge Tech Academy",
     age: 2,
     parentCompany: 'Ancora Education',
-    teachers : [
-        "Jason", "Eric", "Nader"
+    teachers: [
+        "Jason", "Eric", "Roger"
     ],
     courses: {
         SD101: 'HTML',
@@ -20,10 +46,10 @@ let ourSchool = {
 ourSchool.courses.SD201 = 'Mobile Project';
 ourSchool.teachers.push("Gary");
 
-let casablanca = require('./Casablanca.json');
+let movie = require('./Casablanca.json');
 
 //  Let's output the casablanca object.
-console.log(casablanca);
+console.log(movie);
 
 /*--------------------------------------------------------------------------------------------------------------
  *	 Less than fulfilling wasn't it. The greatest movie ever and all we get is
@@ -36,12 +62,6 @@ console.log(casablanca);
  *	         when the member contains an Object, the Object does not get 'unwound' and 'Object' is displayed
  *	         but you can open it in debug and expand the inner layers
  *------------------------------------------------------------------------------------------------------------*/
-
-//  The JSON object hides the actual movie data down a few levels.
-//      To find the actual movie data we need to step over these fields -> casablanca.data.movies[0]
-//      This gets us a reference to the movie item in the movies array underneath the data object.
-//      BTW We happen to know that there is only ever one movie in the movies array.
-let movie = casablanca.data.movies[0];
 
 //  Start easy with the name of the movie and a few facts
 //  the members of a JSON object are reached by variableName.fieldName

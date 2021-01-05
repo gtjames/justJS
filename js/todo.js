@@ -65,6 +65,7 @@ export default class todo {
                 }
                 event.currentTarget.classList.add('selected-tab');
                 this.filterToDos(event.currentTarget.id);
+
             })
         })
     }

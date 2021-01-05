@@ -1,8 +1,8 @@
 let howHigh = 4;
-let limbs = 'x';
+let limbs = "x";
 for ( let layer = 0; layer < howHigh; layer++) {        
     console.log("-".repeat(howHigh-layer-1) + limbs);
-    limbs += 'xx';
+    limbs += "xx";
 }
 
 // this tree is 5 tall
