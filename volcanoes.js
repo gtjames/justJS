@@ -34,4 +34,21 @@ fs.readFile('volcanoes.json', {
 
     let newZealand = volcanoes.filter(v => v.Country === 'New Zealand');
     console.log(`There were ${newZealand.length} volcanoes in New Zealand`);
+
+    //  a little more complex. How do we find the average location of all eruptions
+    //  in New Zealand
+    //      first find all volcanoes in NZ
+    //      next use reduce to find the sum of all the longitudes and latitudes
+    //      then divide by the number of NZ vocanoes
+    let longLat = volcanoes.filter(v => v.Country === 'New Zealand')
+        .reduce((loc, v) =>  {
+            loc.lat += v.Latitude;
+            loc.long += v.Longitude;
+            return loc;
+        }, {lat:0,long:0});
+    longLat.long /= newZealand.length;
+    longLat.lat  /= newZealand.length;
+    longLat.long = longLat.long.toFixed(2);
+    longLat.lat  = longLat.lat.toFixed(2);
+    console.table(longLat);
 })
