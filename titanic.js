@@ -5,11 +5,11 @@ let titanic = [];
 fs.readFile('/projects/csv/titanic.csv', {encoding: 'utf-8'}, 
                 (err, data) => {
   if (err) {
-    console.error(err)
-    return
+    console.error(err);
+    return;
   }
-  let lines = data.split('\r\n');
-  lines.shift();
+  const lines = data.split('\r\n');
+  lines.shift();    //  eliminate the header row
   for (let line of lines) {
     let attributes = line.split(',');
     let person = new Passenger(attributes[0], attributes[1], attributes[2], attributes[3], attributes[4], attributes[5]);
@@ -37,11 +37,8 @@ fs.readFile('/projects/csv/titanic.csv', {encoding: 'utf-8'},
   let henry = titanic.filter( p => p.name.includes('Henry'));
   console.table(henry);
 
-  // let firstClass = titanic.reduce((total, t) => total + (t.passengerClass.includes('1st') ? 1 : 0), 0);
-  // console.log('first class passengers ' + firstClass);
-
-  //let list = titanic.filter();
-//  console.table(titanic)
+  let firstClass = titanic.reduce((total, t) => total + (t.passengerClass.includes('1st') ? 1 : 0), 0);
+  console.log('first class passengers ' + firstClass);
 
   cnt = titanic.reduce((tally, t) => {
     tally[t.passengerCrew] = (tally[t.passengerCrew] || 0) + 1;
@@ -57,6 +54,6 @@ class Passenger {
     this.passengerClass = PassengerClass;
     this.passengerCrew = PassengerCrew;
     this.role = Role;
-    this.survivor = Survivor == 'T';
+    this.survivor = Survivor === 'T';
   }
 }

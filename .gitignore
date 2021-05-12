@@ -6,3 +6,4 @@ Pi-1 Million
 Pi-10 Million
 node_modules/*
 .vscode/*
+.idea/*
