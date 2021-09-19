@@ -75,7 +75,7 @@ let resume = {
         }
     ],
     strengths: ["hard worker", "fast learner", 'honest'],
-    school: ['edge tech', 'Orem High Shcool'],
+    school: ['Brigham Young University', 'Orem High Shcool'],
 }
 
 console.log(`I am ${resume.name} and here's what I do ${resume.bio}`);

@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 /**
- * Created by Edge Tech Academy on 5/4/2017.
+ * Created by Gary James on 5/4/2017.
  */
 
 let me = {

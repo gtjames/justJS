@@ -1,5 +1,5 @@
 /**
- * Created by Edge Tech Academy on 4/24/2017.
+ * Created by Gary James on 4/24/2017.
  */
 
 /*
@@ -20,7 +20,7 @@ while (student < studentGrades.length) {
 
 let name = "edge tech academy";
 let i = 0;
-while (name.charAt(i) != 't' && i < name.length) {
+while (name.charAt(i) !== 't' && i < name.length) {
 	console.log("found: " + name.charAt(i));
 	i++;
 }
@@ -265,13 +265,13 @@ function findPrimeFactors(num, primes, factors) {
 		if (primes[i] > sqrtNum) { //  We've gone through all of the primes < the SQRT of the number
 			factors.push(num); //  so this number must be prime!
 			break; //  get out of the loop and take the not prime return at the bottom
-		} else if ((num % primes[i]) == 0) { //  is the number evenly divisible by a prime number
+		} else if ((num % primes[i]) === 0) { //  is the number evenly divisible by a prime number
 			factors.push(primes[i]); //  Looks like we found a prime factor of our number, save it
 			findPrimeFactors(num / primes[i], primes.slice(i), factors); //  recursively consume all other factors
 			break; //  all factors consumed, leave
 		}
 	}
-	return (factors.length == 1);
+	return (factors.length === 1);
 }
 
 /*-------------------------------------------------------------------------------------------------
@@ -306,12 +306,12 @@ function collectTerms(factors) {
 	for (let i = 0; i < factors.length; i++) {
 		power = 1; //  always start with the factor raised to the power of 1
 		let base = factors[i]; //  base factor to compare the next factors against
-		while (base == factors[i + 1]) { //  does this factor match a previous factor?
+		while (base === factors[i + 1]) { //  does this factor match a previous factor?
 			power++; //  it does so increase the power to which that number s/b raised
-			if (++i == factors.length) //  go to the next factor only if we are not at the end of the list
+			if (++i === factors.length) //  go to the next factor only if we are not at the end of the list
 				break; //  we are at the end, so get out of the loop
 		}
-		collect += ((collect.length == 0) ? "" : " × ") + base + ((power > 1) ? "^" + power : "");
+		collect += ((collect.length === 0) ? "" : " × ") + base + ((power > 1) ? "^" + power : "");
 	}
 	return collect;
 }

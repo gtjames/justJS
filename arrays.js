@@ -1,5 +1,5 @@
 /**
- * Created by Edge Tech Academy on 4/26/2017.
+ * Created by Gary James on 4/26/2017.
  */
 
 let json = {one:['a','b','c','d'], two: 'test', three:{four:[1,2,3,4], five:'six', seven:{'eight':'nine'}}};
@@ -26,7 +26,7 @@ let foundIt = false;
 search:
 	for ( let i = 0; i < arrayOfInts1.length; i++) {
 		for ( let j = 0; j < arrayOfInts1.length; j++ ) {
-			if ( arrayOfInts1[i] * arrayOfInts2[j] == searchfor ) {
+			if ( arrayOfInts1[i] * arrayOfInts2[j] === searchfor ) {
 				foundIt = true;
 				break search;
 			}
@@ -58,7 +58,7 @@ function testing(age) {
 let a = ages.some(checkAdult);
 let b = ages.every(checkAdult);
 let c = ages.filter(checkAdult);
-let d = ages.find(checkAdult);
+// let d = ages.find(checkAdult);
 
  d = ages.find(z => z >= 18);
 ages.forEach(testing)

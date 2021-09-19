@@ -21,7 +21,7 @@ console.log('array len :', tvShows.length);
 let secsSince12 = timeSinceMidnight();
 console.log(secsSince12);
 
-let result = timeChangeCase("Edge Tech");
+let result = timeChangeCase("Simle Function");
 console.log('result :', result);
 
 function timeChangeCase(str) {

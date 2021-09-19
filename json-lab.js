@@ -1,5 +1,5 @@
 /**
- * Created by Edge Tech Academy on 5/5/2017.
+ * Created by Gary James on 5/5/2017.
  */
 let movie = require('./Casablanca.json');
 

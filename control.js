@@ -1,6 +1,6 @@
 "use strict";
 /**
- * Created by Edge Tech Academy on 4/24/2017.
+ * Created by Gary James on 4/24/2017.
  */
 
 let movieMessage;		// this is our string to hold the answer to the movieTest question
@@ -51,7 +51,7 @@ console.log(movieMessage);
 
 //      Or is it Star Wars
 movieMessage = movieTest3('Star Wars');
-movieMessage = console.log(movieMessage);
+console.log(movieMessage);
 
 //      Or is it What's up, Doc?
 movieMessage = movieTest3("What's up, Doc?");

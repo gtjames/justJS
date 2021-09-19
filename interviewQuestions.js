@@ -1,6 +1,13 @@
-let howHigh = 4;
+let howHigh = 33;
 let limbs = "x";
-for ( let layer = 0; layer < howHigh; layer++) {        
+let padding = "";
+for ( let layer = 0; layer < howHigh; layer++) {
+    padding = "-".repeat(howHigh-layer-1)
+    console.log(padding + limbs);
+    limbs += "xx";
+}
+limbs = "x";
+for ( let layer = 0; layer < howHigh; layer++) {
     console.log("-".repeat(howHigh-layer-1) + limbs);
     limbs += "xx";
 }

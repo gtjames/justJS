@@ -1,5 +1,5 @@
 /**
- * Created by Edge Tech Academy on 5/1/2017.
+ * Created by Gary James on 5/1/2017.
  */
 
 let declaration = "We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness. That to secure these rights, Governments are instituted among Men, deriving their just powers from the consent of the governed.";
@@ -24,7 +24,7 @@ for ( let i = 0; i < words.length; i++) {
 
 let i = 0;
 do {
-	if (words[i][0].toUpperCase() == words[i][0])       //  also .toLowerCase == [i]
+	if (words[i][0].toUpperCase() === words[i][0])       //  also .toLowerCase == [i]
 		words[i] = words[i].toUpperCase();
 } while (++i < words.length);
 

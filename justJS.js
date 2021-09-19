@@ -1,5 +1,5 @@
 /**
- * Created by Edge Tech Academy on 4/18/2017.
+ * Created by Gary James on 4/18/2017.
  */
 
 const GRAVITY_IN_MPSS = 9.8;

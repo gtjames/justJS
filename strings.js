@@ -1,5 +1,5 @@
 /**
- * Created by Edge Tech Academy on 5/8/2017.
+ * Created by Gary James on 5/8/2017.
  */
 
 //  First of all we need a fun string to experiment with.
