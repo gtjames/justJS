@@ -91,7 +91,7 @@ console.log("Bogie:  " + movie.actors[0].actorName + " as " + movie.actors[0].ch
 /*--------------------------------------------------------------------------------------------------------------
  *	Let's randomly choose an actor.
  *		Here we use Math.random() which generates a floating point # between 0 and less than 1
- *		To convert to an index that is within the range of our actors array,
+ *		To convert to an index.html that is within the range of our actors array,
  *			we multiply the length of the array by a random number. This is still a floating point number.
  *		We use Math.floor to drop off the decimal portion and leave us with a nice integer
  *

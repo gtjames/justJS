@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body { padding: 20px; }
+
+    .thing1 {
+      margin: 10px;
+      padding: 10px;
+      background: lightyellow;
+      border: 1px solid green;
+      height: 20px
+    }
+
+    .fadeOut {
+      visibility: hidden;
+      opacity: 0;
+      background: black;
+      transition: visibility 1s, opacity 1s, background-color 1s;
+    }
+    .hide { display: none; }
+  </style>
+
+</head>
+<body>
+<button id="tog">toggle them fancy classes</button>
+
+<div id="thing1" class="thing1">I toggle fadeOut</div>
+<div id="thing2" class="thing1 fadeOut">I toggle fadeIn</div>
+
+<div id="thing4" class="thing1 hide">Save</div>
+<div id="thing3" class="thing1">Edit</div>
+
+<p>tur, maxime labore natus non corporis ab odio.</p>
+</body>
+<script>
+  let tog = document.getElementById("tog");
+  let thing1 = document.getElementById("thing1");
+  let thing2 = document.getElementById("thing2");
+  let thing3 = document.getElementById("thing3");
+  let thing4 = document.getElementById("thing4");
+
+  tog.addEventListener("click", () => {
+
+    thing1.classList.toggle("fadeOut");
+    thing2.classList.toggle("fadeOut");
+
+    thing3.classList.toggle("hide");
+    thing4.classList.toggle("hide");
+
+  });
+</script>
+</html>
