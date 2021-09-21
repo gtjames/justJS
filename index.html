@@ -2,54 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        body { padding: 20px; }
-
-        .thing1 {
-            margin: 10px;
-            padding: 10px;
-            background: lightyellow;
-            border: 1px solid green;
-            height: 20px
-        }
-
-        .fadeOut {
-            visibility: hidden;
-            opacity: 0;
-            background: black;
-            transition: visibility 1s, opacity 1s, background-color 1s;
-        }
-        .hide { display: none; }
-    </style>
-
+    <title>API Tests</title>
 </head>
 <body>
-<button id="tog">toggle them fancy classes</button>
+<div id="result">
 
-<div id="thing1" class="thing1">I toggle fadeOut</div>
-<div id="thing2" class="thing1 fadeOut">I toggle fadeIn</div>
-
-<div id="thing4" class="thing1 hide">Save</div>
-<div id="thing3" class="thing1">Edit</div>
-
-<p>tur, maxime labore natus non corporis ab odio.</p>
-</body>
+</div>
 <script>
-    let tog = document.getElementById("tog");
-    let thing1 = document.getElementById("thing1");
-    let thing2 = document.getElementById("thing2");
-    let thing3 = document.getElementById("thing3");
-    let thing4 = document.getElementById("thing4");
-
-    tog.addEventListener("click", () => {
-
-        thing1.classList.toggle("fadeOut");
-        thing2.classList.toggle("fadeOut");
-
-        thing3.classList.toggle("hide");
-        thing4.classList.toggle("hide");
-
-    });
+    fetch("https://imdb8.p.rapidapi.com/title/find?q=game%20of%20thr", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "498ed225bamshcd02cf5559e10edp179d21jsn59b140b93ec5",
+            "x-rapidapi-host": "imdb8.p.rapidapi.com"
+        }
+    })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            var tab = window.open('about:blank', '_blank');
+            document.innerText = "<head><title>JSON Test</title><meta http-equiv='Content-Type' content='application/json; charset=UTF-8'></head>" + JSON.stringify(response);
+            tab.document.write("<head><title>JSON Test</title><meta http-equiv='Content-Type' content='application/json; charset=UTF-8'></head>" + JSON.stringify(response));
+            tab.document.close(); // to finish loading the page
+        })
+        .catch(err => {console.error(err);});
 </script>
+</body>
 </html>
