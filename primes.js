@@ -14,10 +14,10 @@
  *          (actually 1,000,006,000,009)
  *
  *-------------------------------------------------------------------------------------------------*/
-let max = 1000003;
+let max = 1000003;			//		 71751894;
 let primes = getPrimes(max);
 let primeCount = primes.length;
-
+for (let i = primeCount - 1; i > primeCount - 20; i--)	console.log(primes[i])
 console.log("There are " + primeCount + " primes less than " + max);
 
 /*-------------------------------------------------------------------------------------------------
@@ -25,6 +25,7 @@ console.log("There are " + primeCount + " primes less than " + max);
  *  What are the factors of a number below 1,000,000,000,000
  *
  *-------------------------------------------------------------------------------------------------*/
+primeTest(86963777);
 primeTest(5191);
 primeTest(123456789);
 primeTest(987654321);
