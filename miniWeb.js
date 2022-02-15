@@ -1,13 +1,14 @@
 let http = require("http");
 
 http.createServer(function (request, response) {
-    // Send the HTTP header 
+    // Send the HTTP header. Without this line, the browser will still figure it out
     // HTTP Status: 200 : OK
     // Content Type: text/plain
     response.writeHead(200, {'Content-Type': 'text/html'});
     
     // Send the response body as "Hello World"
-    response.end('<h3>Hello World</h3>');
+    var d = new Date();
+    response.end('<h3>Hello World</h3><hr>' + d.toString());
  }).listen(3000);
  
  // Console will print the message
