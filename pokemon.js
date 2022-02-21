@@ -6,14 +6,13 @@ function getJson(url) {
 				return response.json();
 			} else {
 				throw new Error('not ok');
-				console.log('will not run');
 			}
 		})
 		.catch(err => console.log(err) );
 }
 
 const baseUrl = 'https://pokeapi.co/api/v2/';
-const myList = getJson(baseUrl + 'type/3')
+getJson(baseUrl + 'type/3')
 	.then(data => {
 		console.log(data);
 		buildList(data);
