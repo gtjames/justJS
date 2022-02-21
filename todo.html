@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Challenge One: To DO</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="todo.css" />
-  </head>
 
-  <body>
-    <div class="card">
-      <h1>My Todos</h1>
-      <ul id="todo">
-        <!-- to do list will appear here -->
-      </ul>
-      <footer>
-            <div class="bottom-label" id="task-counter">0 items to do. Take a nap!</div>
-            <div class="bottom-tab selected-tab" id="all">
-                <p>ALL</p>
-            </div>
-            <div class="bottom-tab" id="active">
-                <p>ACTIVE</p>
-            </div>
-            <div class="bottom-tab" id="completed">
-                <p>COMPLETED</p>
-            </div>
-      </footer>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <title>Challenge One: To DO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="todo.css" />
+</head>
 
-    <footer class="footer-add">
-        <input type="text" id="new_task" placeholder="Enjoy your day or add a new task">
-        <button id="addnew">ADD</button>
+<body>
+  <div class="card">
+    <h1>My Todos</h1>
+    <ul id="todo">
+      <!-- to do list will appear here -->
+    </ul>
+    <footer>
+      <div class="bottom-label" id="task-counter">0 items to do. Take a nap!</div>
+      <div class="bottom-tab selected-tab" id="all">
+        <p>ALL</p>
+      </div>
+      <div class="bottom-tab" id="active">
+        <p>ACTIVE</p>
+      </div>
+      <div class="bottom-tab" id="completed">
+        <p>COMPLETED</p>
+      </div>
     </footer>
+  </div>
 
-    <script src="./js/main.js" type="module"></script>
-  </body>
+  <footer class="footer-add">
+    <input type="text" id="new_task" placeholder="Enjoy your day or add a new task">
+    <button id="addnew">ADD</button>
+  </footer>
+
+  <script src="./js/main.js" type="module"></script>
+</body>
+
 </html>

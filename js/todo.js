@@ -23,13 +23,8 @@ export default class todo {
         const listItems = Array.from(this.UList.children);
         if (listItems.length > 0 && listItems[0].children[0]) {
             listItems.forEach(item => {
-                item.children[0].addEventListener('click', event => {
-                    this.completeToDo(event.currentTarget.parentElement.id);
-                })
-                //task removal buttons
-                item.children[2].addEventListener('click', event => {
-                    this.removeItem(event.currentTarget.parentElement.id);
-                })
+                item.children[0].addEventListener('click', event => this.completeToDo(item.id) )       //task toggle active state
+                item.children[2].addEventListener('click', event => this.removeItem(item.id) )        //task removal buttons
             })
         }
     }
@@ -73,9 +68,9 @@ export default class todo {
     filterToDos(category) {
         let arrFilter;
         switch (category) {
-            case 'active'   :   arrFilter = toDoList.filter(task => task.completed === false);
-            case 'completed':   arrFilter = toDoList.filter(task => task.completed === true);
-            default         :   arrFilter = toDoList;               //  return all tasks
+            case 'active'    : arrFilter = toDoList.filter(task => task.completed === false);  break;
+            case 'completed' : arrFilter = toDoList.filter(task => task.completed === true);   break
+            default          : arrFilter = toDoList;               //  return all tasks
         }
         renderToDoList(this.UList, arrFilter);
         this.addEventListeners();

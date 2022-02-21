@@ -19,7 +19,7 @@ fs.readFile('volcanoes.json', {
     volcanoes.forEach(v => v.DEATHS = +v.DEATHS);
 
     //  calculate the total number of deaths
-    let deaths = volcanoes.reduce((total, v) => total + v.DEATHS, 0);
+    let deaths = volcanoes.reduce((total, v) => total + v.Deaths, 0);
     console.table(`number of deaths ${deaths}`);
     let aveDeaths = deaths / volcanoes.length;
     console.table(`average number of deaths ${aveDeaths.toFixed(0)}`);
