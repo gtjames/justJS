@@ -22,20 +22,20 @@ fs.readFile('colleges.csv', {
         colleges.push(college);
     }
     console.log(colleges.length);
-    let cnt = colleges.reduce((tot, c) => tot + (c.state == 'UT' ? c.undergrads : 0), 0);
+    let cnt = colleges.reduce((tot, c) => tot + (c.state === 'UT' ? c.undergrads : 0), 0);
     console.table(cnt);
 
     //  this three blocks of code do the same thing
     //  using filter
-    let list = colleges.filter(c => c.state == 'UT');       //  get all Utah colleges
+    let list = colleges.filter(c => c.state === 'UT');       //  get all Utah colleges
     //  using reduce
     //  use filter and map together to get all Utah school names and underGrad count
     let map = colleges
-        .filter(c => c.state == 'UT')
+        .filter(c => c.state === 'UT')
         .map(c => {let x = {"name": c.institution, "undergrads": c.undergrads}; return x;});       //  get all Utah colleges
     //  using reduce
     const doubled = colleges.reduce((total, c) => {         //  get all Utah colleges ust name and number of underGrads
-        if ( c.state == 'UT')
+        if ( c.state === 'UT')
             total.push({name:c.institution, undergrads:c.undergrads});
         return total;
     }, []);
