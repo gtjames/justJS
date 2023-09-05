@@ -35,6 +35,10 @@ fs.readFile('volcanoes.json', {
     let newZealand = volcanoes.filter(v => v.Country === 'New Zealand');
     console.log(`There were ${newZealand.length} volcanoes in New Zealand`);
 
+    let namesInNZ = volcanoes
+    .filter(v => v.Country === 'New Zealand')
+    .map(v => v.Name);
+
     //  a little more complex. How do we find the average location of all eruptions
     //  in New Zealand
     //      first find all volcanoes in NZ

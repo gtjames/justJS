@@ -5,15 +5,11 @@ fs = require ("fs");
 //createTau();
 //createTau1B();
 
-let piBuffer  = fs.readFileSync( 'C:/Projects/csv/Pi-10 Million.txt',  'utf8' );
-let tauBuffer = fs.readFileSync( 'C:/Projects/csv/Tau-10 Million.txt', 'utf8' );
+let piBuffer  = fs.readFileSync( '../csv/Pi-1 Million.txt',  'utf8' );
+let tauBuffer = fs.readFileSync( '../csv/Tau-1 Million.txt', 'utf8' );
 
-findMeInBoth('Gary',   '042854');
-findMeInBoth('Tari',   '122353');
-findMeInBoth('Shiloh', '050579');
-findMeInBoth('Chris',  '031381');
-findMeInBoth('Megan',  '050586');
-findMeInBoth('Pi',     '3141592');
+findMeInBoth('Repeating 9s',   '999999');
+
 
 var stdin = process.openStdin();
 

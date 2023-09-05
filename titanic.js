@@ -2,13 +2,13 @@ const fs = require('fs')
 
 let titanic = [];
 
-fs.readFile('/projects/csv/titanic.csv', {encoding: 'utf-8'}, 
+fs.readFile('../csv/Titanic.csv', {encoding: 'utf-8'}, 
                 (err, data) => {
   if (err) {
     console.error(err);
     return;
   }
-  const lines = data.split('\r\n');
+  const lines = data.split('\n');
   lines.shift();    //  eliminate the header row
   for (let line of lines) {
     let attributes = line.split(',');

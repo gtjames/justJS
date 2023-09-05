@@ -1,4 +1,4 @@
-let howHigh = 33;
+let howHigh = 13;
 let limbs = "x";
 let padding = "";
 for ( let layer = 0; layer < howHigh; layer++) {

@@ -32,11 +32,9 @@ primeTest(987654321);
 primeTest(660343699);
 primeTest(999983 * 1000003);
 primeTest(9811 * 9973);
-primeTest(343 * 625 * 625 * 243 * 251 * 251);
 primeTest(999999999989);
 primeTest(13532385396179);
 primeTest(11232017);
-primeTest(93238)
 
 let month = [2, 3, 5, 7, 11];
 let day = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
@@ -93,16 +91,18 @@ function findPrimeFactors(num, primes, factors) {
  *
  *  Get a list of all primes below a max number
  *  and do it efficiently. This is my own design and I think quite elegant!
+ *		composite 	if the value at position X is true then the number X is a composite number
+ * 		primes		the end product. A list of all primes <= max
  *
  *-------------------------------------------------------------------------------------------------*/
 function getPrimes(max) {
-	let sieve = [];
-	let primes = [2]; 									//  save 2 as prime, it is the only even prime and we now only look at odd numbers
-	for (let i = 3; i <= max; i += 2) { 				//  start at 3 and do a +2 increment to ignore all even
-		if (!sieve[i]) { 								//  sieve == false if the number is prime
-			primes.push(i); 							//  if false sieve[i] has not yet been marked -- it is prime
-			for (let j = 3 * i; j <= max; j += 2 * i) { //  just mark the odd multiples of i, thus ignoring even numbers
-				sieve[j] = true; 						//  true : number is composite: not a prime
+	let composite = [];
+	let primes = [2]; 											//  save 2 as prime, it is the only even prime and we now only look at odd numbers
+	for (let nextNum = 3; nextNum <= max; nextNum += 2) { 		//  start at 3 and do a +2 increment to ignore all even
+		if (!composite[nextNum]) { 								//  sieve == false if the number is prime
+			primes.push(nextNum); 								//  if false sieve[i] has not yet been marked -- it is prime
+			for (let j = 3 * nextNum; j <= max; j += 2 * nextNum) { //  just mark the odd multiples of nextNum, thus ignoring even numbers
+				composite[j] = true; 							//  true : number is composite: not a prime
 			}
 		}
 	}
